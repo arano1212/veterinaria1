@@ -8,5 +8,6 @@ router.get('/api/pets', PetsController.getAll)
 router.get('/api/pets/:id', PetsController.onePetbyIdController)
 router.put('/api/pets/:id', PetsController.updatePetController)
 router.delete('/api/pets/:id', PetsController.logicDEletePetController)
+router.get('/api/pets/:id/owner/vet',PetsController.petsWithOwnerAndVetController)
 
 module.exports = router;

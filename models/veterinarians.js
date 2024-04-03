@@ -37,11 +37,26 @@ const logicDeleteVet =(idVet)=>{
    .where({ vet_id: idVet })
 }
 
+const vetWithPets = (idVet)=>{
+   return vet
+   .select(
+      'pets.name as petName',
+      'veterinarians.first_name as veetName',
+       'veterinarians.last_name as VetLastName',
+      'pets.*',
+      'veterinarians.*'
+   )
+   .from('pets')
+   .where({'pets.vet_id': idVet})
+   .join('veterinarians', 'veterinarians.vet_id', '=',  'pets.vet_id')
+}
+
  module.exports={
     createVet,
     getAllVets,
     oneVetbyId,
     updateVet,
-    logicDeleteVet
+    logicDeleteVet,
+    vetWithPets
 
  }

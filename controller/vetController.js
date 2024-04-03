@@ -66,6 +66,16 @@ const logicDeleteVetController = async (req,res) =>{
         res.status(400).json({ error: 'No pudimos procesar tu solicitud, intenta mas tarde' })
     }
 }
+const vetWithPetsController = async (req, res) => {
+    try {
+        const idVet = req.params.id
+        const vetWithPet = await Veterinarian.vetWithPets(idVet);
+        res.status(200).json(vetWithPet)
+    } catch (error) {
+        console.error(error);
+        res.status(400).json({ error: 'Tuvimos un error al procesar la solicitud' })
+    }
+}
 
 
 module.exports ={
@@ -73,5 +83,6 @@ module.exports ={
     getAllVets,
     oneVetbyIdController,
     updateVetController,
-    logicDeleteVetController
+    logicDeleteVetController,
+    vetWithPetsController
 }

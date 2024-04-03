@@ -67,12 +67,25 @@ const logicDEletePetController = async (req,res) =>{
 }
 
 
+const petsWithOwnerAndVetController = async (req, res) => {
+    try {
+        const idPet = req.params.id
+        const petsWithOwnerAndVet = await Pet.petsWithOwnerAndVet(idPet);
+        res.status(200).json(petsWithOwnerAndVet)
+    } catch (error) {
+        console.error(error);
+        res.status(400).json({ error: 'Tuvimos un error al procesar la solicitud' })
+    }
+}
+
+
 module.exports ={
     createPetController,
     getAll,
     onePetbyIdController,
     updatePetController,
-    logicDEletePetController
+    logicDEletePetController,
+    petsWithOwnerAndVetController
                                                                                                                                                                                                                                                                                                                                                                          
 
 }

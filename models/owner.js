@@ -44,6 +44,7 @@ const ownerWithPets = (idOwner)=>{
    .select(
       'pets.name as petName',
       'owner.first_name as ownerName',
+      'owner.last_name as ownerLastName',
       'pets.*',
       'owner.*'
    )
